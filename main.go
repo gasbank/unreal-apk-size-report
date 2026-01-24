@@ -209,9 +209,9 @@ func byteCountIEC(b int64) string {
 }
 
 func unpak(enginePath string, dst string, src string) error {
-	// 60초 타임아웃
+	// 120초 타임아웃
 	// 종종 UnrealPak이 종료되지 않을 때가 있는 것 같다.
-	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 120*time.Second)
 	defer cancel() // 타임아웃이 끝나면 context가 종료되도록 cancel 호출
 
 	unpakCmd := exec.CommandContext(ctx, path.Join(enginePath, UNREALPAK_PATH), src, "-extract", dst)
